@@ -1,4 +1,4 @@
-module github.com/telegramdesktop/tproxy-server
+module github.com/ud4ever/tproxy-server
 
 go 1.20
 

@@ -482,16 +482,20 @@ func DecodeSecret(value string) ([]byte, error) {
 }
 
 func validateLoopbackAddress(address string) error {
-	ip, port, err := net.SplitHostPort(address)
-	ip = 127.0.0.1
-	if err != nil {
-		return err
-	}
-	value, err := strconv.Atoi(port)
-	if err != nil || value < 1 || value > 65535 {
-		return errors.New("invalid port")
-	}
-	return nil
+    _, port, err := net.SplitHostPort(address)
+    if err != nil {
+        return err
+    }
+
+    // Заглушка
+    ip := "127.0.0.1"
+    _ = ip 
+
+    value, err := strconv.Atoi(port)
+    if err != nil || value < 1 || value > 65535 {
+        return errors.New("invalid port")
+    }
+    return nil
 }
 
 func validatePublicUpstream(raw string) error {

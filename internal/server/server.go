@@ -619,21 +619,28 @@ func (s *Server) clientIP(r *http.Request) (string, error) {
 		return "", err
 	}
 	peer := net.ParseIP(host)
-	if peer == nil || !peer.IsLoopback() {
-		return "", errors.New("request did not arrive through loopback proxy")
+	if peer == nil {
+		return "", errors.New("invalid remote address")
 	}
-	forwarded := r.Header.Get("X-Forwarded-For")
-	if forwarded == "" {
-		return peer.String(), nil
+
+	// Если запросы идут через обратный прокси (например, Caddy), берем IP из заголовка X-Forwarded-For или X-Real-IP
+	if forwarded := r.Header.Get("X-Forwarded-For"); forwarded != "" {
+		if strings.Contains(forwarded, ",") || strings.TrimSpace(forwarded) != forwarded {
+			return "", errors.New("invalid forwarding address")
+		}
+		if parsed := net.ParseIP(forwarded); parsed != nil {
+			return parsed.String(), nil
+		}
 	}
-	if strings.Contains(forwarded, ",") || strings.TrimSpace(forwarded) != forwarded {
-		return "", errors.New("invalid forwarding address")
+
+	if realIP := r.Header.Get("X-Real-IP"); realIP != "" {
+		if parsed := net.ParseIP(realIP); parsed != nil {
+			return parsed.String(), nil
+		}
 	}
-	parsed := net.ParseIP(forwarded)
-	if parsed == nil {
-		return "", errors.New("invalid forwarding address")
-	}
-	return parsed.String(), nil
+
+	// Если заголовков нет, возвращаем прямой IP клиента
+	return peer.String(), nil
 }
 
 // The request reaches the site with its original path, base prefix included. A

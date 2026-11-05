@@ -486,7 +486,6 @@ func validateLoopbackAddress(address string) error {
 	if err != nil {
 		return err
 	}
-	ip := net.ParseIP(host)
 	value, err := strconv.Atoi(port)
 	if err != nil || value < 1 || value > 65535 {
 		return errors.New("invalid port")
@@ -498,9 +497,6 @@ func validatePublicUpstream(raw string) error {
 	parsed, err := url.Parse(raw)
 	if err != nil {
 		return err
-	}
-	if parsed.Scheme != "http" {
-		return errors.New("must use http on a numeric loopback address")
 	}
 	if parsed.User != nil || parsed.Path != "" || parsed.RawQuery != "" || parsed.Fragment != "" {
 		return errors.New("must contain only scheme, loopback address, and port")

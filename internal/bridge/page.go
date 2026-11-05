@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/telegramdesktop/tproxy-server/internal/config"
+	"github.com/ud4ever/tproxy-server/internal/config"
 )
 
 type Page struct {

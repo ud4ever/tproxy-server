@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/telegramdesktop/tproxy-server/internal/config"
-	"github.com/telegramdesktop/tproxy-server/internal/frame"
+	"github.com/ud4ever/tproxy-server/internal/config"
+	"github.com/ud4ever/tproxy-server/internal/frame"
 )
 
 const (

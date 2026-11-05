@@ -487,9 +487,6 @@ func validateLoopbackAddress(address string) error {
 		return err
 	}
 	ip := net.ParseIP(host)
-	if ip == nil || !ip.IsLoopback() {
-		return errors.New("must use a numeric loopback address")
-	}
 	value, err := strconv.Atoi(port)
 	if err != nil || value < 1 || value > 65535 {
 		return errors.New("invalid port")

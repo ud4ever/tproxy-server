@@ -6,8 +6,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/telegramdesktop/tproxy-server/internal/config"
-	"github.com/telegramdesktop/tproxy-server/internal/session"
+	"github.com/ud4ever/tproxy-server/internal/config"
+	"github.com/ud4ever/tproxy-server/internal/session"
 )
 
 func (s *Server) bridgeProfile(r *http.Request) *config.Profile {

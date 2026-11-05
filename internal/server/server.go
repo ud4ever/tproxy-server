@@ -17,10 +17,10 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"github.com/telegramdesktop/tproxy-server/internal/bridge"
-	"github.com/telegramdesktop/tproxy-server/internal/config"
-	"github.com/telegramdesktop/tproxy-server/internal/frame"
-	"github.com/telegramdesktop/tproxy-server/internal/session"
+	"github.com/ud4ever/tproxy-server/internal/bridge"
+	"github.com/ud4ever/tproxy-server/internal/config"
+	"github.com/ud4ever/tproxy-server/internal/frame"
+	"github.com/ud4ever/tproxy-server/internal/session"
 )
 
 const (

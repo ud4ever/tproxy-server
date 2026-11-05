@@ -482,7 +482,7 @@ func DecodeSecret(value string) ([]byte, error) {
 }
 
 func validateLoopbackAddress(address string) error {
-	host, port, err := net.SplitHostPort(address)
+	port, err := net.SplitHostPort(address)
 	if err != nil {
 		return err
 	}

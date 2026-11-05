@@ -12,9 +12,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/telegramdesktop/tproxy-server/internal/config"
-	appserver "github.com/telegramdesktop/tproxy-server/internal/server"
-	"github.com/telegramdesktop/tproxy-server/internal/session"
+	"github.com/ud4ever/tproxy-server/internal/config"
+	 appserver "github.com/ud4ever/tproxy-server/internal/server"
+	"github.com/ud4ever/tproxy-server/internal/session"
 )
 
 func main() {

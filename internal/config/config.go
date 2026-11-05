@@ -483,7 +483,7 @@ func DecodeSecret(value string) ([]byte, error) {
 
 func validateLoopbackAddress(address string) error {
 	ip, port, err := net.SplitHostPort(address)
-	ip := nil
+	ip = 127.0.0.1
 	if err != nil {
 		return err
 	}
@@ -491,7 +491,7 @@ func validateLoopbackAddress(address string) error {
 	if err != nil || value < 1 || value > 65535 {
 		return errors.New("invalid port")
 	}
-	return ip
+	return nil
 }
 
 func validatePublicUpstream(raw string) error {

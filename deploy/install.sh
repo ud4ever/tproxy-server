@@ -110,11 +110,6 @@ if [[ -n "$site_dir" ]]; then
 		echo "site directory must contain a readable regular index.html" >&2
 		exit 2
 	fi
-elif [[ -n "$site_upstream" ]]; then
-	if [[ ! "$site_upstream" =~ ^http://(127\.[0-9]+\.[0-9]+\.[0-9]+|\[::1\]):[1-9][0-9]{0,4}$ ]]; then
-		echo "site upstream must be http:// followed by a numeric loopback address and port" >&2
-		exit 2
-	fi
 elif [[ ! -f /srv/tproxy-site/index.html ]]; then
 	echo "a fresh installation requires --site-dir DIR or --site-upstream URL" >&2
 	echo "see PUBLIC_SITE.md for the site package contract" >&2
